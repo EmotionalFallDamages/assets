@@ -147,7 +147,7 @@ coroutine.resume(coroutine.create(function()
 	end
 end))
 
-function DiscordLib:Window(text)
+function DiscordLib:Window(text: string)
 	local currentservertoggled = ""
 	local minimized = false
 	local fs = false
