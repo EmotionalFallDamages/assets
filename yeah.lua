@@ -39,6 +39,11 @@ local users = {
 	blacklist = loadstring(game:HttpGet("https://raw.githubusercontent.com/KaterHub/master/main/katerhub/users/blacklist.lua"))()
 }
 
+if table.find(users.blacklist,player.UserId) then
+    player:Kick("[KaterHub]: you are blacklisted.")
+    return
+end
+
 pcall(function()
 	userinfo = HttpService:JSONDecode(readfile("DawidsLib-KaterHub.json"));
 end)
@@ -68,16 +73,15 @@ local discordstuff = {
 
 if GetDiscordData == true then
     discordstuff.icon = module.LoadCustomAsset("https://cdn.discordapp.com/icons/"..discord.guild.id.."/"..discord.guild.icon..".png")
-    discordstuff.TotalUsers = tonumber(discord.approximate_member_count)
-    discordstuff.OnlineUsers = tonumber(discord.approximate_presence_count)
-    discordstuff.desc = tostring(discord.guild.description)
+    discordstuff.TotalUsers = "Total: "..tonumber(discord.approximate_member_count)
+    discordstuff.OnlineUsers = "Online :"..tonumber(discord.approximate_presence_count)
 else
     warn("[KaterHub Lib]: https error / discordrequest prob. ipbanned from discord.")
-    discordstuff.desc = katerhub.description
     discordstuff.icon = module.LoadCustomAsset(katerhub.images.icon)
     discordstuff.TotalUsers = "nosignal"
     discordstuff.OnlineUsers = "nosignal"
 end
+discordstuff.desc = katerhub.description
 
 local function MakeDraggable(topbarobject, object)
 	local Dragging = nil
