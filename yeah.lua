@@ -23,27 +23,17 @@ local sounds = {
     notify = module.LoadCustomAsset("https://github.com/Colin4President/assets/raw/refs/heads/main/Notification.ogg")
 }
 
-local function PlaySound(sounde,vol)
-    local sound = Instance.new("Sound")
-    sound.Name = "KH-"..tostring(math.random(1000,9999))
-    sound.Volume = vol
-    sound.PlayOnRemove = true
-    sound.SoundId = sounde
-    sound.Parent = CoreGui
-    sound:Destroy()
-end
-
 local GetKaterHubData, katerhub = pcall(function()
 	return http:JSONDecode(module.Functions.Request({ Url = "https://katerhub-inc.github.io/KaterHub/assets/data.json", Method = "GET" }).Body)
 end)
 
 if GetKaterHubData == false then
     warn("[KaterHub Lib]: https error / assets/data.json")
-    PlaySound(sounds.notify,1)
+    module.PlaySound(sounds.notify,1)
     return
 end
 game:GetService("StarterGui"):SetCore("SendNotification", {Title = "KaterHub v"..katerhub.version;Text = "Loading started.";Duration = 60; Button1 = "Continue";})
-PlaySound(sounds.notify,1)
+module.PlaySound(sounds.notify,1)
 local pfp
 local user
 local tag
@@ -2652,14 +2642,14 @@ function DiscordLib:Window(text)
 						nousers.Visible = false
 					end
 				end
-				
+				-- nigger
 				coroutine.resume(coroutine.create(function()
 					players.PlayerAdded:Connect(function(v)
 						if v:IsFriendsWith(player.UserId) then
 							addPlayer(v.UserId)
-						elseif table.find(admins, v.UserId) then
+						elseif table.find(users.admin, v.UserId) then
 							addPlayer(v.UserId)
-						elseif table.find(premiums, v.UserId) then
+						elseif table.find(users.premium, v.UserId) then
 							addPlayer(v.UserId)
 						end
 					end)
@@ -2670,9 +2660,9 @@ function DiscordLib:Window(text)
 						if v.UserId ~= player.UserId then
 							if v:IsFriendsWith(player.UserId) then
 								addPlayer(v.UserId)
-							elseif table.find(admins, v.UserId) then
+							elseif table.find(users.admin, v.UserId) then
 								addPlayer(v.UserId)
-							elseif table.find(premiums, v.UserId) then
+							elseif table.find(users.premium, v.UserId) then
 								addPlayer(v.UserId)
 							end
 						end
