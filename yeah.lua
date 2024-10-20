@@ -23,12 +23,12 @@ local sounds = {
     notify = module.LoadCustomAsset("https://github.com/Colin4President/assets/raw/refs/heads/main/Notification.ogg")
 }
 
-local function PlaySound(sound,vol)
+local function PlaySound(sounde,vol)
     local sound = Instance.new("Sound")
     sound.Name = "KH-"..tostring(math.random(1000,9999))
     sound.Volume = vol
     sound.PlayOnRemove = true
-    sound.SoundId = sound
+    sound.SoundId = sounde
     sound.Parent = CoreGui
     sound:Destroy()
 end
