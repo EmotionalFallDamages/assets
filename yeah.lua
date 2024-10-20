@@ -23,7 +23,7 @@ local sounds = {
     notify = module.LoadCustomAsset("https://github.com/Colin4President/assets/raw/refs/heads/main/Notification.ogg")
 }
 
-function PlaySound(sound,vol)
+local function PlaySound(sound,vol)
     local sound = Instance.new("Sound")
     sound.Name = "KH-"..tostring(math.random(1000,9999))
     sound.Volume = vol
