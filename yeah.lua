@@ -19,16 +19,19 @@ local player = players.LocalPlayer
 local Mouse = player:GetMouse()
 local http = game:GetService("HttpService")
 
+local notify = module.LoadCustomAsset("https://github.com/Colin4President/assets/raw/refs/heads/main/Notification.ogg")
+
 local GetKaterHubData, katerhub = pcall(function()
 	return http:JSONDecode(module.Functions.Request({ Url = "https://katerhub-inc.github.io/KaterHub/assets/data.json", Method = "GET" }).Body)
 end)
 
 if GetKaterHubData == false then
     warn("[KaterHub Lib]: https error / assets/data.json")
+    module.PlaySound(notify,1)
     return
 end
 game:GetService("StarterGui"):SetCore("SendNotification", {Title = "KaterHub v"..katerhub.version;Text = "Loading started.";Duration = 60; Button1 = "Continue";})
-
+module.PlaySound(notify,1)
 local pfp
 local user
 local tag
