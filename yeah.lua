@@ -21,17 +21,27 @@ local http = game:GetService("HttpService")
 
 local notify = module.LoadCustomAsset("https://github.com/Colin4President/assets/raw/refs/heads/main/Notification.ogg")
 
+function PlaySound(sound,vol)
+    local sound = Instance.new("Sound")
+    sound.Name = "KH-"..tostring(math.random(1000,9999))
+    sound.Volume = vol
+    sound.PlayOnRemove = true
+    sound.SoundId = sound
+    sound.Parent = CoreGui
+    sound:Destroy()
+end
+
 local GetKaterHubData, katerhub = pcall(function()
 	return http:JSONDecode(module.Functions.Request({ Url = "https://katerhub-inc.github.io/KaterHub/assets/data.json", Method = "GET" }).Body)
 end)
 
 if GetKaterHubData == false then
     warn("[KaterHub Lib]: https error / assets/data.json")
-    module.PlaySound(notify,1)
+    PlaySound(notify,1)
     return
 end
 game:GetService("StarterGui"):SetCore("SendNotification", {Title = "KaterHub v"..katerhub.version;Text = "Loading started.";Duration = 60; Button1 = "Continue";})
-module.PlaySound(notify,1)
+PlaySound(notify,1)
 local pfp
 local user
 local tag
