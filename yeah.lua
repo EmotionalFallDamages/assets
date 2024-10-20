@@ -8,7 +8,6 @@
                                               
 ]]
 
-
 local DiscordLib = {}
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -26,7 +25,9 @@ end)
 
 if GetKaterHubData == false then
     warn("[KaterHub Lib]: https error / assets/data.json")
+    return
 end
+game:GetService("StarterGui"):SetCore("SendNotification", {Title = "KaterHub v"..katerhub.version;Text = "Loading started.";Duration = 60; Button1 = "Continue";})
 
 local pfp
 local user
