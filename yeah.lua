@@ -75,7 +75,7 @@ local discordstuff = {
 if GetDiscordData == true then
     discordstuff.icon = module.LoadCustomAsset("https://cdn.discordapp.com/icons/"..discord.guild.id.."/"..discord.guild.icon..".png")
     discordstuff.TotalUsers = "Total: "..tonumber(discord.approximate_member_count)
-    discordstuff.OnlineUsers = "Online :"..tonumber(discord.approximate_presence_count)
+    discordstuff.OnlineUsers = "Live: "..tonumber(discord.approximate_presence_count)
 else
     warn("[KaterHub Lib]: https error / discordrequest prob. ipbanned from discord.")
     discordstuff.icon = module.LoadCustomAsset(katerhub.images.icon)
