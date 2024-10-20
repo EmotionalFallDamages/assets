@@ -1165,171 +1165,6 @@ function DiscordLib:Window(text)
 	UserPanelCorner.Name = "UserPanelCorner"
 	UserPanelCorner.Parent = UserPanel
 
-	-- Discord Panel Starts Here
-
-	J1oinDiscord.Name = "DiscordPanel"
-	J1oinDiscord.Parent = SettingsHolder
-	J1oinDiscord.BackgroundColor3 = Color3.fromRGB(47, 49, 54)
-	J1oinDiscord.ClipsDescendants = true
-	J1oinDiscord.Position = UDim2.new(0.365638763, 0, 0.592106581, 0)
-	J1oinDiscord.Size = UDim2.new(0, 362, 0, 139)
-	J1oinDiscord.Parent = SettingsHolder
-
-	D1iscordPannel.Name = "DiscordPannel"
-	D1iscordPannel.Parent = J1oinDiscord
-	D1iscordPannel.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
-	D1iscordPannel.Position = UDim2.new(0.0331491716, 0, 0.524974823, 0)
-	D1iscordPannel.Size = UDim2.new(0, 337, 0, 56)
-
-	U1serSettingsPadCorner.Name = "UserSettingsPadCorner"
-	U1serSettingsPadCorner.Parent = D1iscordPannel
-
-	UsernameText.Name = "UsernameText"
-	UsernameText.Parent = D1iscordPannel
-	UsernameText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	UsernameText.BackgroundTransparency = 1.000
-	UsernameText.Position = UDim2.new(0.0419999994, 0, 0.154714286, 0)
-	UsernameText.Size = UDim2.new(0, 65, 0, 19)
-	UsernameText.Font = Enum.Font.GothamBold
-	UsernameText.Text = "SERVER STATUS"
-	UsernameText.TextColor3 = Color3.fromRGB(126, 130, 136)
-	UsernameText.TextSize = 11.000
-	UsernameText.TextXAlignment = Enum.TextXAlignment.Left
-
-	U1serHolder.Name = "UserHolder"
-	U1serHolder.Parent = D1iscordPannel
-	U1serHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	U1serHolder.BackgroundTransparency = 1.000
-	U1serHolder.Position = UDim2.new(0.0419999994, 0, 0.493999988, 0)
-	U1serHolder.Size = UDim2.new(0, 65, 0, 19)
-
-	U1serSettingsPadUserTagLayout.Name = "UserSettingsPadUserTagLayout"
-	U1serSettingsPadUserTagLayout.Parent = U1serHolder
-	U1serSettingsPadUserTagLayout.FillDirection = Enum.FillDirection.Horizontal
-	U1serSettingsPadUserTagLayout.SortOrder = Enum.SortOrder.LayoutOrder
-
-	t1otal.Name = "total"
-	t1otal.Parent = U1serHolder
-	t1otal.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	t1otal.BackgroundTransparency = 1.000
-	t1otal.Position = UDim2.new(0.0419999994, 0, 0.493999988, 0)
-	t1otal.Size = UDim2.new(0, 65, 0, 19)
-	t1otal.Font = Enum.Font.Gotham
-	t1otal.Text = discordstuff.TotalUsers
-	t1otal.TextColor3 = Color3.fromRGB(184, 186, 189)
-	t1otal.TextSize = 13.000
-	t1otal.TextXAlignment = Enum.TextXAlignment.Left
-
-	o1nline.Name = "online"
-	o1nline.Parent = U1serHolder
-	o1nline.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	o1nline.BackgroundTransparency = 1.000
-	o1nline.Position = UDim2.new(1, 0, 0, 0)
-	o1nline.Size = UDim2.new(0, 44, 0, 19)
-	o1nline.Font = Enum.Font.Gotham
-	o1nline.Text = discordstuff.OnlineUsers
-	o1nline.TextColor3 = Color3.fromRGB(184, 186, 189)
-	o1nline.TextSize = 13.000
-	o1nline.TextXAlignment = Enum.TextXAlignment.Left
-
-	j1oin.Name = "join"
-	j1oin.Parent = D1iscordPannel
-	j1oin.BackgroundColor3 = Color3.fromRGB(116, 127, 141)
-	j1oin.Position = UDim2.new(0.389984578, 0, 0.232142851, 0)
-	j1oin.Size = UDim2.new(0, 192, 0, 30)
-	j1oin.AutoButtonColor = false
-	j1oin.Font = Enum.Font.Gotham
-	j1oin.Text = "Join KaterHub"
-	j1oin.TextColor3 = Color3.fromRGB(255, 255, 255)
-	j1oin.TextSize = 13.000
-
-	j1oin.MouseEnter:Connect(function()
-		TweenService:Create(
-			j1oin,
-			TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{BackgroundColor3 = Color3.fromRGB(104,114,127)}
-		):Play()
-	end)
-
-	j1oin.MouseLeave:Connect(function()
-		TweenService:Create(
-			j1oin,
-			TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{BackgroundColor3 = Color3.fromRGB(116, 127, 141)}
-		):Play()
-	end)
-	
-	j1oin.MouseButton1Click:Connect(function()
-		module.Functions.Request({
-			Url = "http://127.0.0.1:6463/rpc?v=1",
-			Method = "POST",
-			Headers = {
-				["Content-Type"] = "application/json",
-				["Origin"] = "https://discord.com"
-			},
-			Body = game:GetService("HttpService"):JSONEncode({
-				cmd = "INVITE_BROWSER",
-				args = {
-					code = katerhub.invite
-				},
-				nonce = "KaterHub"
-			})
-		})
-	end)
-
-	E1ditBtnCorner.CornerRadius = UDim.new(0, 3)
-	E1ditBtnCorner.Name = "EditBtnCorner"
-	E1ditBtnCorner.Parent = j1oin
-
-	U1serPanelCorner.Name = "UserPanelCorner"
-	U1serPanelCorner.Parent = J1oinDiscord
-
-	I1conHolder.Name = "IconHolder"
-	I1conHolder.Parent = J1oinDiscord
-	I1conHolder.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
-	I1conHolder.BorderSizePixel = 0
-	I1conHolder.Position = UDim2.new(0.420448273, 0, 0.0532700792, 0)
-	I1conHolder.Size = UDim2.new(0, 56, 0, 56)
-
-	I1conHolderCorner.CornerRadius = UDim.new(0.100000001, 8)
-	I1conHolderCorner.Name = "IconHolderCorner"
-	I1conHolderCorner.Parent = I1conHolder
-
-	D1iscordIcon.Name = "DiscordIcon"
-	D1iscordIcon.Parent = I1conHolder
-	D1iscordIcon.AnchorPoint = Vector2.new(0.5, 0.5)
-	D1iscordIcon.BackgroundColor3 = Color3.fromRGB(188, 188, 188)
-	D1iscordIcon.BackgroundTransparency = 0.950
-	D1iscordIcon.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	D1iscordIcon.BorderSizePixel = 0
-	D1iscordIcon.Position = UDim2.new(0.5, 0, 0.5, 0)
-	D1iscordIcon.Size = UDim2.new(0, 44, 0, 44)
-	D1iscordIcon.Image = discordstuff.icon
-
-	I1conCorner.CornerRadius = UDim.new(0.100000001, 8)
-	I1conCorner.Name = "IconCorner"
-	I1conCorner.Parent = D1iscordIcon
-
-	B1ackgroundImage.Name = "BackgroundImage"
-	B1ackgroundImage.Parent = J1oinDiscord
-	B1ackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	B1ackgroundImage.BackgroundTransparency = 1.000
-	B1ackgroundImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	B1ackgroundImage.BorderSizePixel = 0
-	B1ackgroundImage.Size = UDim2.new(0, 362, 0, 139)
-	B1ackgroundImage.ZIndex = 0
-	B1ackgroundImage.Image = discordstuff.bg
-	B1ackgroundImage.ImageTransparency = 0.050
-
-	I1mageCorner.Name = "ImageCorner"
-	I1mageCorner.Parent = B1ackgroundImage
-
-	I1mageTransparency.Rotation = 90
-	I1mageTransparency.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.15, 0.34), NumberSequenceKeypoint.new(0.60, 0.79), NumberSequenceKeypoint.new(1.00, 1.00)}
-	I1mageTransparency.Name = "ImageTransparency"
-	I1mageTransparency.Parent = B1ackgroundImage
-
-
 	LeftFrame.Name = "LeftFrame"
 	LeftFrame.Parent = SettingsHolder
 	LeftFrame.BackgroundColor3 = Color3.fromRGB(47, 49, 54)
@@ -2436,6 +2271,156 @@ function DiscordLib:Window(text)
 					):Play()
 				end)
 				ChannelHolder.CanvasSize = UDim2.new(0,0,0,ChannelHolderLayout.AbsoluteContentSize.Y)
+			end
+			-- Discord Panel Starts Here
+			function ChannelContent:DiscordPannel(callback)
+				J1oinDiscord.Name = "DiscordPanel"
+				J1oinDiscord.Parent = SettingsHolder
+				J1oinDiscord.BackgroundColor3 = Color3.fromRGB(47, 49, 54)
+				J1oinDiscord.ClipsDescendants = true
+				J1oinDiscord.Position = UDim2.new(0.365638763, 0, 0.592106581, 0)
+				J1oinDiscord.Size = UDim2.new(0, 362, 0, 139)
+				J1oinDiscord.Parent = SettingsHolder
+
+				D1iscordPannel.Name = "DiscordPannel"
+				D1iscordPannel.Parent = J1oinDiscord
+				D1iscordPannel.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
+				D1iscordPannel.Position = UDim2.new(0.0331491716, 0, 0.524974823, 0)
+				D1iscordPannel.Size = UDim2.new(0, 337, 0, 56)
+
+				U1serSettingsPadCorner.Name = "UserSettingsPadCorner"
+				U1serSettingsPadCorner.Parent = D1iscordPannel
+
+				UsernameText.Name = "UsernameText"
+				UsernameText.Parent = D1iscordPannel
+				UsernameText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				UsernameText.BackgroundTransparency = 1.000
+				UsernameText.Position = UDim2.new(0.0419999994, 0, 0.154714286, 0)
+				UsernameText.Size = UDim2.new(0, 65, 0, 19)
+				UsernameText.Font = Enum.Font.GothamBold
+				UsernameText.Text = "SERVER STATUS"
+				UsernameText.TextColor3 = Color3.fromRGB(126, 130, 136)
+				UsernameText.TextSize = 11.000
+				UsernameText.TextXAlignment = Enum.TextXAlignment.Left
+
+				U1serHolder.Name = "UserHolder"
+				U1serHolder.Parent = D1iscordPannel
+				U1serHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				U1serHolder.BackgroundTransparency = 1.000
+				U1serHolder.Position = UDim2.new(0.0419999994, 0, 0.493999988, 0)
+				U1serHolder.Size = UDim2.new(0, 65, 0, 19)
+
+				U1serSettingsPadUserTagLayout.Name = "UserSettingsPadUserTagLayout"
+				U1serSettingsPadUserTagLayout.Parent = U1serHolder
+				U1serSettingsPadUserTagLayout.FillDirection = Enum.FillDirection.Horizontal
+				U1serSettingsPadUserTagLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+				t1otal.Name = "total"
+				t1otal.Parent = U1serHolder
+				t1otal.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				t1otal.BackgroundTransparency = 1.000
+				t1otal.Position = UDim2.new(0.0419999994, 0, 0.493999988, 0)
+				t1otal.Size = UDim2.new(0, 65, 0, 19)
+				t1otal.Font = Enum.Font.Gotham
+				t1otal.Text = discordstuff.TotalUsers
+				t1otal.TextColor3 = Color3.fromRGB(184, 186, 189)
+				t1otal.TextSize = 13.000
+				t1otal.TextXAlignment = Enum.TextXAlignment.Left
+
+				o1nline.Name = "online"
+				o1nline.Parent = U1serHolder
+				o1nline.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				o1nline.BackgroundTransparency = 1.000
+				o1nline.Position = UDim2.new(1, 0, 0, 0)
+				o1nline.Size = UDim2.new(0, 44, 0, 19)
+				o1nline.Font = Enum.Font.Gotham
+				o1nline.Text = discordstuff.OnlineUsers
+				o1nline.TextColor3 = Color3.fromRGB(184, 186, 189)
+				o1nline.TextSize = 13.000
+				o1nline.TextXAlignment = Enum.TextXAlignment.Left
+
+				j1oin.Name = "join"
+				j1oin.Parent = D1iscordPannel
+				j1oin.BackgroundColor3 = Color3.fromRGB(116, 127, 141)
+				j1oin.Position = UDim2.new(0.389984578, 0, 0.232142851, 0)
+				j1oin.Size = UDim2.new(0, 192, 0, 30)
+				j1oin.AutoButtonColor = false
+				j1oin.Font = Enum.Font.Gotham
+				j1oin.Text = "Join KaterHub"
+				j1oin.TextColor3 = Color3.fromRGB(255, 255, 255)
+				j1oin.TextSize = 13.000
+
+				j1oin.MouseEnter:Connect(function()
+					TweenService:Create(
+						j1oin,
+						TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+						{BackgroundColor3 = Color3.fromRGB(104,114,127)}
+					):Play()
+				end)
+
+				j1oin.MouseLeave:Connect(function()
+					TweenService:Create(
+						j1oin,
+						TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+						{BackgroundColor3 = Color3.fromRGB(116, 127, 141)}
+					):Play()
+				end)
+				
+				j1oin.MouseButton1Click:Connect(function()
+					pcall(callback)
+				end)
+
+				E1ditBtnCorner.CornerRadius = UDim.new(0, 3)
+				E1ditBtnCorner.Name = "EditBtnCorner"
+				E1ditBtnCorner.Parent = j1oin
+
+				U1serPanelCorner.Name = "UserPanelCorner"
+				U1serPanelCorner.Parent = J1oinDiscord
+
+				I1conHolder.Name = "IconHolder"
+				I1conHolder.Parent = J1oinDiscord
+				I1conHolder.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
+				I1conHolder.BorderSizePixel = 0
+				I1conHolder.Position = UDim2.new(0.420448273, 0, 0.0532700792, 0)
+				I1conHolder.Size = UDim2.new(0, 56, 0, 56)
+
+				I1conHolderCorner.CornerRadius = UDim.new(0.100000001, 8)
+				I1conHolderCorner.Name = "IconHolderCorner"
+				I1conHolderCorner.Parent = I1conHolder
+
+				D1iscordIcon.Name = "DiscordIcon"
+				D1iscordIcon.Parent = I1conHolder
+				D1iscordIcon.AnchorPoint = Vector2.new(0.5, 0.5)
+				D1iscordIcon.BackgroundColor3 = Color3.fromRGB(188, 188, 188)
+				D1iscordIcon.BackgroundTransparency = 0.950
+				D1iscordIcon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				D1iscordIcon.BorderSizePixel = 0
+				D1iscordIcon.Position = UDim2.new(0.5, 0, 0.5, 0)
+				D1iscordIcon.Size = UDim2.new(0, 44, 0, 44)
+				D1iscordIcon.Image = discordstuff.icon
+
+				I1conCorner.CornerRadius = UDim.new(0.100000001, 8)
+				I1conCorner.Name = "IconCorner"
+				I1conCorner.Parent = D1iscordIcon
+
+				B1ackgroundImage.Name = "BackgroundImage"
+				B1ackgroundImage.Parent = J1oinDiscord
+				B1ackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				B1ackgroundImage.BackgroundTransparency = 1.000
+				B1ackgroundImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				B1ackgroundImage.BorderSizePixel = 0
+				B1ackgroundImage.Size = UDim2.new(0, 362, 0, 139)
+				B1ackgroundImage.ZIndex = 0
+				B1ackgroundImage.Image = discordstuff.bg
+				B1ackgroundImage.ImageTransparency = 0.050
+
+				I1mageCorner.Name = "ImageCorner"
+				I1mageCorner.Parent = B1ackgroundImage
+
+				I1mageTransparency.Rotation = 90
+				I1mageTransparency.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.15, 0.34), NumberSequenceKeypoint.new(0.60, 0.79), NumberSequenceKeypoint.new(1.00, 1.00)}
+				I1mageTransparency.Name = "ImageTransparency"
+				I1mageTransparency.Parent = B1ackgroundImage
 			end
 			function ChannelContent:Playerlist()
 				local PlayerList = Instance.new("Frame")
